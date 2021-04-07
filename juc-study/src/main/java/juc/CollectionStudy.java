@@ -1,4 +1,4 @@
-package com.oseco.quick.juc;
+package juc;
 
 import java.util.concurrent.SynchronousQueue;
 

@@ -1,5 +1,3 @@
-package com.oseco.tools;
-
 import java.io.File;
 
 public class DeleteUselessRepository {

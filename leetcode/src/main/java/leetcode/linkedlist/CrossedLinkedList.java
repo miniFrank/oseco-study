@@ -31,7 +31,7 @@ public class CrossedLinkedList {
             headBNum = headBNumTmp;
         }
 
-        if (headBNum != null && headANum.equals(headBNum)) {
+        if (headANum.equals(headBNum)) {
             return new ListNode(headANum);
         }
 

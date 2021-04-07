@@ -1,4 +1,4 @@
-package com.oseco.quick.collections;
+package collections;
 
 public class HashMapStudy {
     static final int HASH_BITS = 0x7fffffff; // usable bits of normal node hash
