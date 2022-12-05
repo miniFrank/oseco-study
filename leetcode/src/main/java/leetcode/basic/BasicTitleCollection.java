@@ -1,5 +1,8 @@
 package leetcode.basic;
 
+/**
+ * https://leetcode-cn.com/problems/reverse-integer/
+ */
 public class BasicTitleCollection {
     /**
      * 解法1
@@ -64,7 +67,12 @@ public class BasicTitleCollection {
     }
 
     public static void main(String[] args) {
-//        System.out.println(reserveNumber(0));
+        int i = 2;
+        System.out.println(--i);
+        int j = 2;
+        j--;
+        System.out.println(j);
+        System.out.println(reserveNumber(123));
 //        System.out.println(reserveNumber(1));
 //        System.out.println(reserveNumber(-10));
 //        System.out.println(reserveNumber(-1023));
