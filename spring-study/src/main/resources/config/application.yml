@@ -1,0 +1,13 @@
+server:
+  port: 8999
+
+spring:
+  main:
+    allow-circular-references: true
+
+logging:
+  level:
+    root: debug
+
+main:
+  tool: 'val'
