@@ -9,6 +9,8 @@
         <module>juc-study</module>
         <module>tools</module>
         <module>basic-study</module>
+        <module>framework</module>
+        <module>sharding-study</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -68,6 +70,36 @@
                 <groupId>com.oseco</groupId>
                 <artifactId>tools</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>3.18.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>4.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-namespace</artifactId>
+                <version>4.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.31</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

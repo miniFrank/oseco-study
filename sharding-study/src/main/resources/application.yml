@@ -1,0 +1,50 @@
+server:
+  port: 8999
+
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3307/study
+        username: root
+        password: password
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3307/study_2
+        username: root
+        password: password
+    sharding:
+      default-database-strategy:
+        inline:
+          sharding-column: store_no
+          algorithm-expression: ds$->{store_no % 2}
+      tables:
+        t_order:
+          actual-data-nodes: ds$->{0..1}.t_order_$->{0..1}
+          table-strategy:
+            inline:
+              sharding-column: user_id
+              algorithm-expression: t_order_$->{user_id % 2}
+          key-generator:
+            column: order_id
+            type: SNOWFLAKE
+        t_order_item:
+          actual-data-nodes: ds$->{0..1}.t_order_item_$->{0..1}
+          table-strategy:
+            inline:
+              sharding-column: user_id
+              algorithm-expression: t_order_item_$->{user_id % 2}
+      #          key-generator:
+      #            column: goods_id
+      #            type: SNOWFLAKE
+      binding-tables: t_order,t_order_item
+      broadcast-tables: t_config
+    props:
+      sql:
+        show: true
+  main:
+    allow-circular-references: true
