@@ -2,6 +2,54 @@ server:
   port: 8999
 
 spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1,slave
+    ds0:
+      type: org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3307/study
+      username: root
+      password: password
+    ds1:
+      type: org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3307/study_2
+      username: root
+      password: password
+    slave:
+      type: org.apache.commons.dbcp2.BasicDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3307/study_read
+      username: root
+      password: password
+    masterslave:
+      name: ms
+      master-data-source-name: ds0
+      slave-data-source-names: slave
+      load-balance-algorithm-type: round_robin
+    sharding:
+      tables:
+        t_order:
+          actual-data-nodes: ds$->{0..1}.t_order$->{0,1}
+          table-strategy:
+            inline:
+              sharding-column: store_no
+              algorithm-expression: t_order$->{order_id % 2}
+          key-generator:
+            column: order_id
+            type: SNOWFLAKE
+        t_order_item:
+          actual-data-nodes: ds$->{0..1}.t_order_item$->{0,1}
+          table-strategy:
+            inline:
+              sharding-column: order_id
+              algorithm-expression: t_order_item$->{order_id % 2}
+#          key-generator:
+#            column: goods_id
+#            type: SNOWFLAKE
+      binding-tables: t_order,t_order_item
+      broadcast-tables: t_config
   main:
     allow-circular-references: true
 

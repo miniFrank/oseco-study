@@ -1,0 +1,32 @@
+server:
+  port: 8999
+
+spring:
+  kafka:
+    admin:
+      client-id: 10000
+    bootstrap-servers: "localhost:9092"
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: "mq-study"
+  main:
+    allow-circular-references: true
+
+logging:
+  level:
+    org:
+      apache:
+        rocketmq: "debug"
+
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: "mq-study"
+    send-message-timeout: 30000
+    enable-msg-trace: true
+mq:
+  topic:
+    pay-topic: "pay-topic"
+    logistics-topic: "logistics-topic"
+    printable-receipt-topic: "printable-receipt-topic"

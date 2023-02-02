@@ -17,7 +17,8 @@ public class CollectionStudy {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        testSynchronousQueueProducer();
-        testSynchronousQueueConsumer();
+//        testSynchronousQueueProducer();
+//        testSynchronousQueueConsumer();
+        System.out.println(System.getProperty("user.home"));
     }
 }
